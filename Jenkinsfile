@@ -13,13 +13,14 @@ pipeline {
 
         stage ("Docker build") {
            agent{
-             dockerfile true  }
-           steps{
-             echo 'Hello World'
-             sh 'myCustomEnvVar = $myCustomEnvVar'
-    
-             }
+             dockerfile {
+                dir 'Dockerfiles'
+              }
             }
+            steps{
+                sh "hostname"
+            }
+        }
         }
     }
 

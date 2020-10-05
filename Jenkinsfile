@@ -1,15 +1,21 @@
+
 pipeline {
-    agent { dockerfile true
+    agent {
+       label "ssh-slave"
     }
-    stages{
-        stage('Example'){
-            agent { 
-                dockerfile true
-                }
-            steps{
-                echo 'Hello World'
-               sh 'myCustomEnvVar = $myCustomEnvVar'
+
+    stages {
+        stage('Normal build') {
+           steps {
+              echo "Running in ssh-slave"
+              sh "hostname"
+           }
+        } 
+
+        stage ("Docker build") {
+           agent{
+             dockerfile {
+                dir 'Dockerfiles'
+                label "ssh-slave"
+             }
             }
-        }
-    }
-}

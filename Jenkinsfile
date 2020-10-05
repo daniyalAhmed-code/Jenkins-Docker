@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Normal build') {
            steps {
-              echo "Running in ssh-slave"
+              echo "Running in ssh-slave "
               sh "which docker"
               sh 'docker image ls'
            }

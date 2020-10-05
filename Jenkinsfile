@@ -1,7 +1,5 @@
 pipeline {
-    agent { label 'ssh-slave'
-                    dockerfile true
-    
+    agent { dockerfile true
     }
     stages{
         stage('Example'){

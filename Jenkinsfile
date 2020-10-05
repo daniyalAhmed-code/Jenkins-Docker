@@ -1,10 +1,10 @@
 pipeline {
-    agent { label 'ssh-slave' && dockerfile true }
+    agent { label 'ssh-slave'}
     stages{
         stage('Example'){
             steps{
                 echo 'Hello World'
-                sh 'myCustomEnvVar = $myCustomEnvVar'
+               
             }
         }
     }

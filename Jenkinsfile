@@ -13,9 +13,7 @@ pipeline {
 
         stage ("Docker build") {
            agent{
-             dockerfile {
-                dockerfiles true
-              }
+             dockerfile true
             }
             steps{
                 sh "hostname"

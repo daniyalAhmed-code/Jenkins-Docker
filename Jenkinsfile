@@ -1,4 +1,3 @@
-
 pipeline {
     agent {
        label "ssh-slave"
@@ -18,5 +17,12 @@ pipeline {
                 dir 'Dockerfiles'
                 label "ssh-slave"
              }
+           steps{
+             echo 'Hello World'
+             sh 'myCustomEnvVar = $myCustomEnvVar'
+    
+             }
             }
-        }    }    }
+        }
+    }
+    }

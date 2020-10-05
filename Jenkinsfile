@@ -8,6 +8,7 @@ pipeline {
            steps {
               echo "Running in ssh-slave"
               sh "which docker"
+              sh 'docker image ls'
            }
         } 
 

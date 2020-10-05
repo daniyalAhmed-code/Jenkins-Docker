@@ -15,7 +15,6 @@ pipeline {
            agent{
              dockerfile {
                 dir 'Dockerfiles'
-                label "ssh-slave"
              }
            steps{
              echo 'Hello World'

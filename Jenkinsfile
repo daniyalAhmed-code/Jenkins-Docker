@@ -14,7 +14,7 @@ pipeline {
         stage ("Docker build") {
            agent{
              dockerfile {
-                dir 'Dockerfiles'
+                dockerfiles true
               }
             }
             steps{

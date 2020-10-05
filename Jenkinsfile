@@ -19,3 +19,4 @@ pipeline {
                 label "ssh-slave"
              }
             }
+        }    }    }

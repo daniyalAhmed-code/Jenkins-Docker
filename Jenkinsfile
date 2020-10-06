@@ -11,7 +11,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'dev', variable: 'AWS_ACCESS_KEY_ID']]) {
+          withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws_credentials', variable: 'AWS_ACCESS_KEY_ID']]) {
                sh "echo this is ${env.AWS_ACCESS_KEY_ID}"
                sh "echo this is ${env.AWS_SECRET_ACCESS_KEY}"
        } 

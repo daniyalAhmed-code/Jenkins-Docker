@@ -1,23 +1,9 @@
-pipeline {
-  agent {label 'ssh-slave'}
-  stages {
-   stage('Building image') {
-      steps{
-        script {
-          docker.build('daniyal-repo')
-        }
-      }
-    }
-    stage('Deploy Image') {
-      steps{
-        script {
-          withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws_credentials', variable: 'AWS_ACCESS_KEY_ID']]) {
-               sh "echo this is ${env.AWS_ACCESS_KEY_ID}"
-               sh "echo this is ${env.AWS_SECRET_ACCESS_KEY}"
-       } 
-         
-        }
-      }
-    }
+node {
+  stage 'Docker build'
+  docker.build('daniyal-repo')
+ 
+  stage 'Docker push'
+  docker.withRegistry('https://020046395185.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:aws_credentials') {
+    docker.image('demo').push('latest')
   }
 }

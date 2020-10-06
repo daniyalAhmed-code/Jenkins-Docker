@@ -11,8 +11,8 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '020046395185.dkr.ecr.us-east-2.amazonaws.com','ecr:us-east-2:aws_credentials' ) {
-            docker.image('demo').push('latest')
+          docker.withRegistry( '020046395185.dkr.ecr.us-east-2.amazonaws.com','ecr:us-east-1:aws_credentials' ) {
+            docker.image('daniyal-repo').push('latest')
           }
         }
       }

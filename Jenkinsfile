@@ -1,5 +1,5 @@
 pipeline {
-  agent {label ''}
+  agent {label 'ssh-slave'}
   stages {
    stage('Building image') {
       steps{

@@ -11,9 +11,11 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '020046395185.dkr.ecr.us-east-2.amazonaws.com/daniyal-repo' ) {
-            docker.image('daniyal-repo').push('latest')
-          }
+          withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'dev', variable: 'AWS_ACCESS_KEY_ID']]) {
+               sh "echo this is ${env.AWS_ACCESS_KEY_ID}"
+               sh "echo this is ${env.AWS_SECRET_ACCESS_KEY}"
+       } 
+         
         }
       }
     }
